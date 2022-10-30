@@ -51,21 +51,21 @@ def download(song, artist = None, play_after_downloading = True):
     except Exception as e:
         ads=False
     if ads:    
-        vid = driver.find_elements_by_id("video-title")
+        vid = driver.find_elementb(By.ID,"video-title")
         vid[1].click()
     else:
-        vid = driver.find_elements_by_id("video-title")
+        vid = driver.find_element(By.ID,"video-title")
         vid[0].click()
-    #driver.find_element_by_id("video-title").click()
+    #driver.find_element(By.ID,"video-title").click()
     print(driver.current_url)
     url=driver.current_url
     driver.get("https://ytmp3.cc/en13/")
     #driver.maximize_window()   
-    driver.find_element_by_xpath("//*[@id='mp3']").click()
-    driver.find_element_by_xpath("//*[@id='input']").send_keys(url)
-    driver.find_element_by_xpath("//*[@id='submit']").click()
+    driver.find_element(By.XPATH,"//*[@id='mp3']").click()
+    driver.find_element(By.XPATH,"//*[@id='input']").send_keys(url)
+    driver.find_element(By.XPATH,"//*[@id='submit']").click()
     time.sleep(4)
-    driver.find_element_by_xpath('//*[@id="buttons"]/a[1]').click()
+    driver.find_element(By.XPATH,"//*[@id='buttons' or @id='download']/span").click()
     print("Downloading")
 
 
